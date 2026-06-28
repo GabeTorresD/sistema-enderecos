@@ -32,4 +32,19 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
 
-app.Run();
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    if(!context.Usuarios.Any())
+    {
+        context.Usuarios.Add(new SistemaEnderecos.Models.Usuario
+        {
+            Nome = "Administrador",
+            Login = "Admin",
+            Senha = BCrypt.Net.BCrypt.HashPassword("admin123")
+        });
+        context.SaveChanges();
+    }
+}
+
+    app.Run();
