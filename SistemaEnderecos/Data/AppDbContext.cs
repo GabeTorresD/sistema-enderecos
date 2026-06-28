@@ -20,7 +20,7 @@ namespace SistemaEnderecos.Data
                 //1 pra muitos
                     .HasOne(e => e.Usuario)
                     .WithMany(u => u.Enderecos)
-                    .HasForeignKey(e => e.UsuarioID)
+                    .HasForeignKey(e => e.UsuarioId)
                 //Deleta todos os endereços um usuario se esse for deletado
                     .OnDelete(DeleteBehavior.Cascade);
         }

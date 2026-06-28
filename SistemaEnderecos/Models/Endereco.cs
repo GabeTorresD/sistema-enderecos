@@ -5,7 +5,7 @@ namespace SistemaEnderecos.Models
     public class Endereco
     {
         //Chave primaria
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Cep { get; set; } = string.Empty;
@@ -21,14 +21,14 @@ namespace SistemaEnderecos.Models
         public string Cidade { get; set; } = string.Empty;
 
         [Required]
-        public string UF {  get; set; } = string.Empty;
+        public string Uf {  get; set; } = string.Empty;
 
         [Required]
         public string Numero { get; set; } = string.Empty;
 
         //Chave estrangeira
 
-        public int UsuarioID { get; set; }
+        public int UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
 
     }

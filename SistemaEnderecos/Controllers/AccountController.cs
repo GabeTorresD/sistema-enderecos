@@ -34,7 +34,7 @@ namespace SistemaEnderecos.Controllers
 
             //Busca o usuario pelo login
             var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Login == model.Login);
+            .FirstOrDefaultAsync(u => u.Login.ToLower() == model.Login.ToLower());
 
             //Verfica se usuario existe e se a senha está correta
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(model.Senha, usuario.Senha))
@@ -44,7 +44,7 @@ namespace SistemaEnderecos.Controllers
             }
 
             //Salvar o usuario na sessao
-            HttpContext.Session.SetInt32("UsuarioID", usuario.Id);
+            HttpContext.Session.SetInt32("UsuarioId", usuario.Id);
             HttpContext.Session.SetString("UsuarioNome", usuario.Nome);
 
             return RedirectToAction("Index", "Endereco");

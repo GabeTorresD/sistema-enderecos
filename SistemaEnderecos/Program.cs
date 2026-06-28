@@ -40,7 +40,7 @@ using (var scope = app.Services.CreateScope())
         context.Usuarios.Add(new SistemaEnderecos.Models.Usuario
         {
             Nome = "Administrador",
-            Login = "Admin",
+            Login = "admin",
             Senha = BCrypt.Net.BCrypt.HashPassword("admin123")
         });
         context.SaveChanges();
